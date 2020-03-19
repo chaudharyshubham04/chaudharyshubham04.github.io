@@ -58,9 +58,9 @@ app.use(function(req,res,next){
 	next();
 });
 
-app.get("/",function(req,res){
-	res.render("show")
-});
+// app.get("/",function(req,res){
+// 	res.render("show")
+// });
 
 app.get("/campgrounds",isLoggedIn,function(req,res){
 	Campground.find({},function(err,campground){         
