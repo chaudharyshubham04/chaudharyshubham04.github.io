@@ -24,8 +24,8 @@ var Campground= mongoose.model("Campground",campgroundSchema);
  
 app.set("view engine","ejs");
 app.use(bodyParser.urlencoded({extended:true}));
-// app.use(express.static('public'));
-app.use(express.static(path.join(__dirname, './public/')));
+ app.use(express.static('public'));
+//app.use(express.static(path.join(__dirname, './public/')));
 app.use(methodOverride("_method"));
 
 
@@ -58,9 +58,9 @@ app.use(function(req,res,next){
 	next();
 });
 
-// app.get("/",function(req,res){
-// 	res.render("show")
-// });
+ app.get("/",function(req,res){
+ 	res.sendFile(__dirname+"/index.html");
+ });
 
 app.get("/campgrounds",isLoggedIn,function(req,res){
 	Campground.find({},function(err,campground){         
